@@ -1,3 +1,10 @@
+let arr1 = [];
+for (let i = 0; i <= 1000000; i++) {
+    arr1.push(i);
+}
+let guessNumber = arr1[Math.floor(arr1.length * Math.random())];
+
+
 const verify = (guessNumber) => {
     let arr = [];
     for (let i = 0; i <= 1000000; i++) {
@@ -14,11 +21,10 @@ const verify = (guessNumber) => {
         else start = pivot;
         pivot = Math.floor((start + end) / 2);
         attempts++;
-        if(arr[pivot] === guessNumber) {result = 0;
-        } else if (arr[pivot] < guessNumber) {result = -1}  
+        if(arr[pivot] === guessNumber){result = 0;
+        } else if (arr[pivot] < guessNumber){result = -1}  
         else result = 1;   
-
-        };
+      };
         console.log(result);
       
         if (arr[pivot] === guessNumber) return `Found: ${guessNumber} in ${attempts} attempts`;
@@ -27,4 +33,4 @@ const verify = (guessNumber) => {
     return 'Nothing Found';
 };
   
-console.log(verify(777777));  
+console.log(verify(guessNumber));  
