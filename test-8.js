@@ -1,27 +1,30 @@
-let guessNumber = Math.floor(Math.random() * (1000000 - 1 + 1)) + 1;
-let count = 0;
+const verify = (guessNumber) => {
+    let arr = [];
+    for (let i = 0; i <= 1000000; i++) {
+        arr.push(i);
+    }
+    let start = 0;
+    let end = arr.length;
+    let pivot = Math.floor((start + end) / 2);
+    let attempts = 0;
+    
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[pivot] !== guessNumber) {
+        if (guessNumber < arr[pivot]) end = pivot;
+        else start = pivot;
+        pivot = Math.floor((start + end) / 2);
+        attempts++;
+        if(arr[pivot] === guessNumber) {result = 0;
+        } else if (arr[pivot] < guessNumber) {result = -1}  
+        else result = 1;   
 
-let verify = (n) => {
-    let number = n;
-    let randomNumber =  Math.floor(Math.random() * (1000000 - 1 + 1)) + 1;
-    let result;
-       
-    if(count < 50){
-        if (randomNumber === number) {
-        result = 0; 
-        } else if (randomNumber < number) {
-        result = -1;
-        } else if (randomNumber > number) {
-        result = 1;
-        }
-        count++;
-    }else{
-        return 'Stop game';
-    }    
-    return result;
-}      
-
-
-for (let i = 0; i < 51; i++) {
-    console.log(verify(guessNumber));
-}
+        };
+        console.log(result);
+      
+        if (arr[pivot] === guessNumber) return `Found: ${guessNumber} in ${attempts} attempts`;
+    };
+  
+    return 'Nothing Found';
+};
+  
+console.log(verify(777777));  
