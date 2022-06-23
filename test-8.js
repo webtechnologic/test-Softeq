@@ -1,9 +1,4 @@
-let arr1 = [];
-for (let i = 0; i <= 1000000; i++) {
-    arr1.push(i);
-}
-let guessNumber = arr1[Math.floor(arr1.length * Math.random())];
-
+let guessNumber = Math.floor(Math.random() * (1000000 - 1 + 1)) + 1;
 
 const verify = (guessNumber) => {
     let arr = [];
@@ -33,4 +28,4 @@ const verify = (guessNumber) => {
     return 'Nothing Found';
 };
   
-console.log(verify(guessNumber));  
+console.log(verify(guessNumber));
